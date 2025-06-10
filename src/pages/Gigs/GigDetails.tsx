@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -65,11 +66,7 @@ const GigDetails = () => {
       email: 'contact@cleaningmasters.com',
       description: 'Professional cleaning service with a team of experienced cleaners. We specialize in residential and commercial cleaning.'
     },
-    images: [
-      'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&h=600&fit=crop&auto=format',
-      'https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?w=400&h=300&fit=crop&auto=format',
-      'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=400&h=300&fit=crop&auto=format'
-    ],
+    images: ['/placeholder.svg', '/placeholder.svg', '/placeholder.svg'],
     features: [
       'Eco-friendly products',
       'Insured service',
@@ -407,7 +404,7 @@ const GigDetails = () => {
                     <Link key={i} to={`/gig/${i + 10}`} className="block">
                       <div className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors">
                         <img
-                          src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=100&h=100&fit=crop&auto=format"
+                          src="/placeholder.svg"
                           alt="Service"
                           className="w-12 h-12 object-cover rounded"
                         />

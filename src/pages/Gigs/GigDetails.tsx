@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -24,65 +25,123 @@ const GigDetails = () => {
   const { toast } = useToast();
   const [isContactVisible, setIsContactVisible] = useState(false);
 
-  // Mock data for the gig
-  const gig = {
-    id: '1',
-    title: 'Professional Home Cleaning Service',
-    description: 'Deep cleaning service for your home using eco-friendly products. Our experienced team provides comprehensive cleaning including dusting, mopping, bathroom sanitization, kitchen cleaning, and more. We bring our own supplies and equipment.',
-    fullDescription: `
-      Our professional home cleaning service offers:
-      
-      • Deep cleaning of all rooms
-      • Kitchen and bathroom sanitization
-      • Dusting and vacuuming
-      • Floor mopping and polishing
-      • Window cleaning (interior)
-      • Eco-friendly cleaning products
-      • Insured and background-checked staff
-      
-      We serve residential properties including apartments, independent houses, and villas. Our team is trained to handle delicate items and maintains the highest standards of cleanliness.
-      
-      Available on weekdays and weekends. Advance booking recommended.
-    `,
-    price: 500,
-    rating: 4.8,
-    reviews: 120,
-    location: 'Mumbai Central, Mumbai',
-    category: 'House Cleaning',
-    serviceArea: ['Mumbai Central', 'Bandra', 'Andheri', 'Powai', 'Thane'],
-    duration: '2-3 hours',
-    availability: 'Mon-Sat: 8AM-6PM',
-    provider: {
-      id: 'provider1',
-      name: 'Cleaning Masters',
-      avatar: '',
+  // Mock data for different gigs based on ID
+  const gigData = {
+    '1': {
+      id: '1',
+      title: 'Professional Home Cleaning Service',
+      description: 'Deep cleaning service for your home using eco-friendly products. Our experienced team provides comprehensive cleaning including dusting, mopping, bathroom sanitization, kitchen cleaning, and more.',
+      fullDescription: `Our professional home cleaning service offers: • Deep cleaning of all rooms • Kitchen and bathroom sanitization • Dusting and vacuuming • Floor mopping and polishing • Window cleaning (interior) • Eco-friendly cleaning products • Insured and background-checked staff`,
+      price: 500,
       rating: 4.8,
-      reviews: 150,
-      experience: '5+ years',
-      verified: true,
-      joinedDate: 'January 2020',
-      phone: '+91 9876543210',
-      email: 'contact@cleaningmasters.com',
-      description: 'Professional cleaning service with a team of experienced cleaners. We specialize in residential and commercial cleaning.'
+      reviews: 120,
+      location: 'Mumbai Central, Mumbai',
+      category: 'House Cleaning',
+      serviceArea: ['Mumbai Central', 'Bandra', 'Andheri', 'Powai', 'Thane'],
+      duration: '2-3 hours',
+      availability: 'Mon-Sat: 8AM-6PM',
+      provider: {
+        id: 'provider1',
+        name: 'Cleaning Masters',
+        rating: 4.8,
+        reviews: 150,
+        experience: '5+ years',
+        verified: true,
+        joinedDate: 'January 2020',
+        phone: '+91 9876543210',
+        email: 'contact@cleaningmasters.com',
+        description: 'Professional cleaning service with a team of experienced cleaners.'
+      },
+      images: [
+        'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&h=600&fit=crop&auto=format',
+        'https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?w=400&h=300&fit=crop&auto=format',
+        'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=400&h=300&fit=crop&auto=format'
+      ],
+      features: ['Eco-friendly products', 'Insured service', 'Background-checked staff', 'Own equipment provided', 'Satisfaction guarantee'],
+      packages: [
+        { name: 'Basic Clean', price: 500, description: 'Standard cleaning of 1BHK' },
+        { name: 'Deep Clean', price: 800, description: 'Thorough cleaning of 1BHK' },
+        { name: 'Premium Clean', price: 1200, description: 'Deep clean + appliance cleaning' }
+      ]
     },
-    images: [
-      'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&h=600&fit=crop&auto=format',
-      'https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?w=400&h=300&fit=crop&auto=format',
-      'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=400&h=300&fit=crop&auto=format'
-    ],
-    features: [
-      'Eco-friendly products',
-      'Insured service',
-      'Background-checked staff',
-      'Own equipment provided',
-      'Satisfaction guarantee'
-    ],
-    packages: [
-      { name: 'Basic Clean', price: 500, description: 'Standard cleaning of 1BHK' },
-      { name: 'Deep Clean', price: 800, description: 'Thorough cleaning of 1BHK' },
-      { name: 'Premium Clean', price: 1200, description: 'Deep clean + appliance cleaning' }
-    ]
+    '2': {
+      id: '2',
+      title: 'Math & Science Home Tutor',
+      description: 'Expert tutor for classes 8-12. IIT graduate with proven track record in mathematics and science subjects.',
+      fullDescription: `Our professional tutoring service includes: • Mathematics (Algebra, Geometry, Calculus) • Physics (Mechanics, Thermodynamics, Optics) • Chemistry (Organic, Inorganic, Physical) • Personalized study plans • Regular assessments and progress tracking • Exam preparation strategies • Doubt clearing sessions`,
+      price: 800,
+      rating: 4.9,
+      reviews: 85,
+      location: 'Bangalore, Karnataka',
+      category: 'Home Tutoring',
+      serviceArea: ['Koramangala', 'BTM Layout', 'Jayanagar', 'JP Nagar', 'Electronic City'],
+      duration: '1-2 hours per session',
+      availability: 'Mon-Sun: 4PM-9PM',
+      provider: {
+        id: 'provider2',
+        name: 'Dr. Anil Kumar',
+        rating: 4.9,
+        reviews: 95,
+        experience: '8+ years',
+        verified: true,
+        joinedDate: 'March 2018',
+        phone: '+91 9876543211',
+        email: 'dr.anil@tutoring.com',
+        description: 'IIT graduate with PhD in Mathematics. Specialized in board exam preparation.'
+      },
+      images: [
+        'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=800&h=600&fit=crop&auto=format',
+        'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=300&fit=crop&auto=format',
+        'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=300&fit=crop&auto=format'
+      ],
+      features: ['IIT Graduate', 'PhD in Mathematics', 'Board exam specialist', 'Personalized teaching', '95% success rate'],
+      packages: [
+        { name: 'Basic Tutoring', price: 800, description: 'Regular subject tutoring' },
+        { name: 'Exam Preparation', price: 1200, description: 'Intensive exam preparation' },
+        { name: 'Complete Package', price: 2000, description: 'All subjects + test series' }
+      ]
+    },
+    '3': {
+      id: '3',
+      title: 'Vedic Astrology Consultation',
+      description: 'Get insights into your future with authentic Vedic astrology readings from certified astrologers.',
+      fullDescription: `Our Vedic astrology services include: • Birth chart analysis • Career guidance • Marriage compatibility • Health predictions • Gemstone recommendations • Remedial measures • Muhurat selection • Vastu consultation`,
+      price: 300,
+      rating: 4.7,
+      reviews: 200,
+      location: 'Varanasi, Uttar Pradesh',
+      category: 'Astrology',
+      serviceArea: ['Varanasi', 'Allahabad', 'Lucknow', 'Kanpur', 'Online Consultations'],
+      duration: '30-60 minutes',
+      availability: 'Daily: 6AM-10PM',
+      provider: {
+        id: 'provider3',
+        name: 'Pandit Sharma',
+        rating: 4.7,
+        reviews: 220,
+        experience: '15+ years',
+        verified: true,
+        joinedDate: 'January 2015',
+        phone: '+91 9876543212',
+        email: 'pandit.sharma@astrology.com',
+        description: 'Certified Vedic astrologer with traditional training from Varanasi gurukul.'
+      },
+      images: [
+        'https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?w=800&h=600&fit=crop&auto=format',
+        'https://images.unsplash.com/photo-1500673922987-e212871fec22?w=400&h=300&fit=crop&auto=format',
+        'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400&h=300&fit=crop&auto=format'
+      ],
+      features: ['Certified astrologer', 'Traditional training', '15+ years experience', 'Multiple languages', 'Online consultations'],
+      packages: [
+        { name: 'Basic Reading', price: 300, description: 'Birth chart analysis' },
+        { name: 'Detailed Consultation', price: 500, description: 'Complete life reading' },
+        { name: 'Premium Package', price: 800, description: 'Reading + remedies + follow-up' }
+      ]
+    }
   };
+
+  // Get the specific gig data based on ID, fallback to first gig if not found
+  const gig = gigData[id as keyof typeof gigData] || gigData['1'];
 
   const customerReviews = [
     {
@@ -90,7 +149,7 @@ const GigDetails = () => {
       customer: 'Priya Sharma',
       rating: 5,
       date: '2 weeks ago',
-      comment: 'Excellent service! Very thorough cleaning and professional team. Highly recommended.',
+      comment: 'Excellent service! Very thorough and professional. Highly recommended.',
       avatar: '👩'
     },
     {
@@ -98,7 +157,7 @@ const GigDetails = () => {
       customer: 'Rajesh Kumar',
       rating: 5,
       date: '1 month ago',
-      comment: 'Great attention to detail. They cleaned areas I never thought needed cleaning!',
+      comment: 'Great attention to detail. Very satisfied with the service quality.',
       avatar: '👨'
     },
     {
@@ -413,7 +472,7 @@ const GigDetails = () => {
                         />
                         <div className="flex-1 min-w-0">
                           <h4 className="text-sm font-medium truncate">
-                            Professional Cleaning Service {i}
+                            Professional Service {i}
                           </h4>
                           <div className="flex items-center mt-1">
                             <Star className="w-3 h-3 fill-yellow-400 text-yellow-400 mr-1" />

@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Input } from '@/components/ui/input';
@@ -37,7 +36,7 @@ const GigsList = () => {
     'Pet Care'
   ];
 
-  // Mock data for gigs
+  // Mock data for gigs with relevant images
   const allGigs = [
     {
       id: '1',
@@ -49,7 +48,7 @@ const GigsList = () => {
       location: 'Mumbai Central',
       category: 'House Cleaning',
       provider: { name: 'Cleaning Masters' },
-      image: '/placeholder.svg'
+      image: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=500&h=300&fit=crop&auto=format'
     },
     {
       id: '2',
@@ -61,7 +60,7 @@ const GigsList = () => {
       location: 'Bangalore',
       category: 'Home Tutoring',
       provider: { name: 'Dr. Anil Kumar' },
-      image: '/placeholder.svg'
+      image: 'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=500&h=300&fit=crop&auto=format'
     },
     {
       id: '3',
@@ -73,7 +72,7 @@ const GigsList = () => {
       location: 'Varanasi',
       category: 'Astrology',
       provider: { name: 'Pandit Sharma' },
-      image: '/placeholder.svg'
+      image: 'https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?w=500&h=300&fit=crop&auto=format'
     },
     {
       id: '4',
@@ -85,7 +84,7 @@ const GigsList = () => {
       location: 'Delhi NCR',
       category: 'Plumbing',
       provider: { name: 'Delhi Plumbers' },
-      image: '/placeholder.svg'
+      image: 'https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=500&h=300&fit=crop&auto=format'
     },
     {
       id: '5',
@@ -97,7 +96,7 @@ const GigsList = () => {
       location: 'Pune',
       category: 'Salon & Beauty',
       provider: { name: 'Beauty at Home' },
-      image: '/placeholder.svg'
+      image: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=500&h=300&fit=crop&auto=format'
     },
     {
       id: '6',
@@ -109,7 +108,7 @@ const GigsList = () => {
       location: 'Mumbai',
       category: 'Fitness Training',
       provider: { name: 'Fit India' },
-      image: '/placeholder.svg'
+      image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&h=300&fit=crop&auto=format'
     }
   ];
 

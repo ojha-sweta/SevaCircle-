@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -54,7 +53,7 @@ const Home = () => {
       location: 'Mumbai Central',
       category: 'Cleaning',
       provider: { name: 'Cleaning Masters' },
-      image: '/placeholder.svg'
+      image: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=500&h=300&fit=crop&auto=format'
     },
     {
       id: '2',
@@ -66,7 +65,7 @@ const Home = () => {
       location: 'Bangalore',
       category: 'Education',
       provider: { name: 'Dr. Anil Kumar' },
-      image: '/placeholder.svg'
+      image: 'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=500&h=300&fit=crop&auto=format'
     },
     {
       id: '3',
@@ -78,7 +77,7 @@ const Home = () => {
       location: 'Varanasi',
       category: 'Astrology',
       provider: { name: 'Pandit Sharma' },
-      image: '/placeholder.svg'
+      image: 'https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?w=500&h=300&fit=crop&auto=format'
     }
   ];
 

@@ -9,7 +9,7 @@ Backend server for InNeedIndeed - Local Services Marketplace for India
 ```bash
 cd backend
 cp .env.example .env
-# Edit .env with your MongoDB Atlas connection string
+# Edit .env with your MongoDB Atlas connection string and JWT secret
 ```
 
 ### 2. Install Dependencies
@@ -33,6 +33,48 @@ The server will start on `http://localhost:5000`
 - **GET** `/api/test` - API test endpoint
 - **GET** `/api/test/db` - Database connection test
 
+### Authentication Routes
+- **POST** `/api/auth/register` - Register new user
+- **POST** `/api/auth/login` - Login user
+- **GET** `/api/auth/me` - Get current user profile (Protected)
+- **PUT** `/api/auth/profile` - Update user profile (Protected)
+
+## 🔐 Authentication
+
+### Register User
+```bash
+curl -X POST http://localhost:5000/api/auth/register \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "John Doe",
+    "email": "john@example.com",
+    "password": "password123",
+    "role": "user",
+    "phone": "9876543210",
+    "location": {
+      "city": "Mumbai",
+      "state": "Maharashtra",
+      "pincode": "400001"
+    }
+  }'
+```
+
+### Login User
+```bash
+curl -X POST http://localhost:5000/api/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "john@example.com",
+    "password": "password123"
+  }'
+```
+
+### Get User Profile (Protected Route)
+```bash
+curl -X GET http://localhost:5000/api/auth/me \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN"
+```
+
 ## 🌐 Testing the API
 
 ### Browser Testing
@@ -41,14 +83,8 @@ Open these URLs in your browser:
 - http://localhost:5000/api/test
 - http://localhost:5000/api/test/db
 
-### cURL Testing
-```bash
-# Test API
-curl http://localhost:5000/api/test
-
-# Test database connection
-curl http://localhost:5000/api/test/db
-```
+### Authentication Testing
+Use the cURL commands above or a tool like Postman to test the authentication endpoints.
 
 ## ☁️ Cloud Deployment
 
@@ -72,6 +108,8 @@ curl http://localhost:5000/api/test/db
 | `MONGO_URI` | MongoDB Atlas connection string | `mongodb+srv://...` |
 | `PORT` | Server port | `5000` |
 | `FRONTEND_URL` | Frontend URL for CORS | `http://localhost:5173` |
+| `JWT_SECRET` | JWT signing secret | `your-super-secret-jwt-key` |
+| `JWT_EXPIRE` | JWT expiration time | `30d` |
 
 ## 📁 Project Structure
 
@@ -79,17 +117,21 @@ curl http://localhost:5000/api/test/db
 backend/
 ├── server.js          # Main server file
 ├── routes/            # API routes
-│   └── test.js        # Test routes
-├── controllers/       # Route controllers (Phase 2)
-├── models/           # Mongoose models (Phase 2)
-├── middleware/       # Custom middleware (Phase 2)
+│   ├── test.js        # Test routes
+│   └── auth.js        # Authentication routes
+├── controllers/       # Route controllers
+│   └── authController.js  # Auth logic
+├── models/           # Mongoose models
+│   └── User.js       # User model
+├── middleware/       # Custom middleware
+│   └── auth.js       # JWT authentication middleware
 ├── .env.example      # Environment variables template
 └── package.json      # Dependencies and scripts
 ```
 
 ## 🔄 Next Phases
 
-- **Phase 2**: Authentication system (JWT, user models)
-- **Phase 3**: Core APIs (Gigs, Jobs, Users)
+- **Phase 3**: Core APIs (Gigs, Jobs, Bookings)
 - **Phase 4**: Reviews, ratings, admin panel
-- **Phase 5**: Deployment optimization
+- **Phase 5**: File uploads, notifications
+- **Phase 6**: Deployment optimization

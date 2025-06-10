@@ -41,6 +41,7 @@ connectDB();
 
 // Routes
 app.use('/api/test', require('./routes/test'));
+app.use('/api/auth', require('./routes/auth'));
 
 // Health check endpoint
 app.get('/health', (req, res) => {
@@ -59,7 +60,11 @@ app.use('*', (req, res) => {
     message: 'API endpoint not found',
     availableRoutes: [
       'GET /health',
-      'GET /api/test'
+      'GET /api/test',
+      'POST /api/auth/register',
+      'POST /api/auth/login',
+      'GET /api/auth/me',
+      'PUT /api/auth/profile'
     ]
   });
 });
@@ -80,6 +85,7 @@ app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
   console.log(`📍 API available at: http://localhost:${PORT}`);
   console.log(`🔍 Test endpoint: http://localhost:${PORT}/api/test`);
+  console.log(`🔐 Auth endpoints: http://localhost:${PORT}/api/auth`);
 });
 
 module.exports = app;

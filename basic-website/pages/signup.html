@@ -1,0 +1,508 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - InNeedIndeed</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        .signup-page {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--indian-navy) 0%, var(--indian-saffron) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .signup-container {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+        
+        .signup-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .signup-header h1 {
+            color: var(--indian-navy);
+            margin-bottom: 0.5rem;
+        }
+        
+        .signup-header p {
+            color: var(--gray-600);
+        }
+        
+        .user-type-selection {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .user-type-card {
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .user-type-card.active {
+            border-color: var(--indian-saffron);
+            background: rgba(255, 153, 51, 0.1);
+        }
+        
+        .user-type-card:hover {
+            border-color: var(--indian-saffron);
+        }
+        
+        .user-type-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--indian-saffron);
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--gray-700);
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--indian-saffron);
+        }
+        
+        .form-input.error {
+            border-color: #ef4444;
+        }
+        
+        .error-message {
+            color: #ef4444;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+        
+        .signup-btn {
+            width: 100%;
+            background: var(--indian-saffron);
+            color: var(--white);
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-bottom: 1rem;
+        }
+        
+        .signup-btn:hover {
+            background: var(--indian-saffron-dark);
+        }
+        
+        .signup-btn:disabled {
+            background: #d1d5db;
+            cursor: not-allowed;
+        }
+        
+        .login-link {
+            text-align: center;
+            padding-top: 1rem;
+            border-top: 1px solid #e5e7eb;
+        }
+        
+        .login-link a {
+            color: var(--indian-saffron);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+        
+        .back-home {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: var(--white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+        
+        .back-home:hover {
+            opacity: 0.8;
+        }
+        
+        .terms-checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .terms-checkbox input {
+            margin-top: 0.25rem;
+        }
+        
+        .terms-checkbox label {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+            line-height: 1.4;
+        }
+        
+        .terms-checkbox a {
+            color: var(--indian-saffron);
+            text-decoration: none;
+        }
+        
+        .terms-checkbox a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .user-type-selection {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-page">
+        <a href="../index.html" class="back-home">
+            <i class="fas fa-arrow-left"></i>
+            Back to Home
+        </a>
+        
+        <div class="signup-container animate-scale-in">
+            <div class="signup-header">
+                <h1>Join InNeedIndeed</h1>
+                <p>Create your account and start connecting</p>
+            </div>
+            
+            <!-- User Type Selection -->
+            <div class="user-type-selection">
+                <div class="user-type-card" data-type="consumer">
+                    <div class="user-type-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3>I Need Services</h3>
+                    <p>Find and hire professionals</p>
+                </div>
+                
+                <div class="user-type-card" data-type="provider">
+                    <div class="user-type-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>I Provide Services</h3>
+                    <p>Offer your skills to customers</p>
+                </div>
+            </div>
+            
+            <form id="signupForm">
+                <input type="hidden" id="userType" value="">
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName" class="form-label">First Name</label>
+                        <input 
+                            type="text" 
+                            id="firstName" 
+                            class="form-input" 
+                            placeholder="Enter first name"
+                            required
+                        >
+                        <div class="error-message" id="firstNameError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="lastName" class="form-label">Last Name</label>
+                        <input 
+                            type="text" 
+                            id="lastName" 
+                            class="form-input" 
+                            placeholder="Enter last name"
+                            required
+                        >
+                        <div class="error-message" id="lastNameError"></div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        class="form-input" 
+                        placeholder="Enter your email"
+                        required
+                    >
+                    <div class="error-message" id="emailError"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone" class="form-label">Phone Number</label>
+                    <input 
+                        type="tel" 
+                        id="phone" 
+                        class="form-input" 
+                        placeholder="Enter your phone number"
+                        required
+                    >
+                    <div class="error-message" id="phoneError"></div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="password" class="form-label">Password</label>
+                        <input 
+                            type="password" 
+                            id="password" 
+                            class="form-input" 
+                            placeholder="Create password"
+                            required
+                        >
+                        <div class="error-message" id="passwordError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="confirmPassword" class="form-label">Confirm Password</label>
+                        <input 
+                            type="password" 
+                            id="confirmPassword" 
+                            class="form-input" 
+                            placeholder="Confirm password"
+                            required
+                        >
+                        <div class="error-message" id="confirmPasswordError"></div>
+                    </div>
+                </div>
+                
+                <div class="terms-checkbox">
+                    <input type="checkbox" id="termsAccepted" required>
+                    <label for="termsAccepted">
+                        I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                    </label>
+                </div>
+                
+                <button type="submit" class="signup-btn" id="signupBtn">
+                    Create Account
+                </button>
+                
+                <div class="login-link">
+                    <p>Already have an account? <a href="login.html">Sign in here</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const userTypeCards = document.querySelectorAll('.user-type-card');
+            const signupForm = document.getElementById('signupForm');
+            const signupBtn = document.getElementById('signupBtn');
+            
+            // Check URL params for user type
+            const urlParams = new URLSearchParams(window.location.search);
+            const userTypeParam = urlParams.get('type');
+            
+            if (userTypeParam) {
+                const targetCard = document.querySelector(`[data-type="${userTypeParam}"]`);
+                if (targetCard) {
+                    selectUserType(targetCard, userTypeParam);
+                }
+            }
+            
+            // User type selection
+            userTypeCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const userType = card.getAttribute('data-type');
+                    selectUserType(card, userType);
+                });
+            });
+            
+            function selectUserType(selectedCard, userType) {
+                userTypeCards.forEach(card => card.classList.remove('active'));
+                selectedCard.classList.add('active');
+                document.getElementById('userType').value = userType;
+            }
+            
+            // Form submission
+            signupForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Clear previous errors
+                clearErrors();
+                
+                const formData = {
+                    userType: document.getElementById('userType').value,
+                    firstName: document.getElementById('firstName').value.trim(),
+                    lastName: document.getElementById('lastName').value.trim(),
+                    email: document.getElementById('email').value.trim(),
+                    phone: document.getElementById('phone').value.trim(),
+                    password: document.getElementById('password').value,
+                    confirmPassword: document.getElementById('confirmPassword').value,
+                    termsAccepted: document.getElementById('termsAccepted').checked
+                };
+                
+                // Validation
+                let hasError = false;
+                
+                if (!formData.userType) {
+                    window.showNotification('Please select account type', 'error');
+                    hasError = true;
+                }
+                
+                if (!formData.firstName) {
+                    showError('firstNameError', 'First name is required');
+                    markFieldError('firstName');
+                    hasError = true;
+                }
+                
+                if (!formData.lastName) {
+                    showError('lastNameError', 'Last name is required');
+                    markFieldError('lastName');
+                    hasError = true;
+                }
+                
+                if (!formData.email) {
+                    showError('emailError', 'Email is required');
+                    markFieldError('email');
+                    hasError = true;
+                } else if (!validateEmail(formData.email)) {
+                    showError('emailError', 'Please enter a valid email address');
+                    markFieldError('email');
+                    hasError = true;
+                }
+                
+                if (!formData.phone) {
+                    showError('phoneError', 'Phone number is required');
+                    markFieldError('phone');
+                    hasError = true;
+                } else if (!validatePhone(formData.phone)) {
+                    showError('phoneError', 'Please enter a valid 10-digit phone number');
+                    markFieldError('phone');
+                    hasError = true;
+                }
+                
+                if (!formData.password) {
+                    showError('passwordError', 'Password is required');
+                    markFieldError('password');
+                    hasError = true;
+                } else if (formData.password.length < 6) {
+                    showError('passwordError', 'Password must be at least 6 characters');
+                    markFieldError('password');
+                    hasError = true;
+                }
+                
+                if (formData.password !== formData.confirmPassword) {
+                    showError('confirmPasswordError', 'Passwords do not match');
+                    markFieldError('confirmPassword');
+                    hasError = true;
+                }
+                
+                if (!formData.termsAccepted) {
+                    window.showNotification('Please accept the terms and conditions', 'error');
+                    hasError = true;
+                }
+                
+                if (hasError) return;
+                
+                // Simulate signup process
+                signupBtn.disabled = true;
+                signupBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating Account...';
+                
+                setTimeout(() => {
+                    window.showNotification('Account created successfully! Redirecting to login...', 'success');
+                    
+                    setTimeout(() => {
+                        window.location.href = 'login.html';
+                    }, 1500);
+                }, 2000);
+            });
+            
+            // Clear errors on input
+            document.querySelectorAll('.form-input').forEach(input => {
+                input.addEventListener('input', () => {
+                    input.classList.remove('error');
+                    const errorElement = document.getElementById(input.id + 'Error');
+                    if (errorElement) {
+                        errorElement.textContent = '';
+                    }
+                });
+            });
+            
+            function showError(elementId, message) {
+                document.getElementById(elementId).textContent = message;
+            }
+            
+            function markFieldError(fieldId) {
+                document.getElementById(fieldId).classList.add('error');
+            }
+            
+            function clearErrors() {
+                document.querySelectorAll('.error-message').forEach(el => el.textContent = '');
+                document.querySelectorAll('.form-input').forEach(el => el.classList.remove('error'));
+            }
+            
+            function validateEmail(email) {
+                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return re.test(email);
+            }
+            
+            function validatePhone(phone) {
+                const re = /^[6-9]\d{9}$/;
+                return re.test(phone.replace(/\D/g, ''));
+            }
+        });
+    </script>
+</body>
+</html>

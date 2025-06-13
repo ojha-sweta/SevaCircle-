@@ -63,15 +63,15 @@
             <!-- Stats -->
             <div class="hero-stats">
                 <div class="stat-item">
-                    <div class="stat-number">1000</div>
+                    <div class="stat-number">1000+</div>
                     <div class="stat-label">Service Providers</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">50</div>
+                    <div class="stat-number">50+</div>
                     <div class="stat-label">Cities Covered</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">5000</div>
+                    <div class="stat-number">5000+</div>
                     <div class="stat-label">Happy Customers</div>
                 </div>
             </div>
@@ -351,51 +351,5 @@
 
     <!-- JavaScript -->
     <script src="js/main.js"></script>
-    
-    <script>
-        // Form handling
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-            
-            if (name && email && message && window.validateEmail(email)) {
-                window.showNotification('Thank you for your message! We\'ll get back to you soon.', 'success');
-                this.reset();
-            } else {
-                window.showNotification('Please fill in all fields with valid information.', 'error');
-            }
-        });
-
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = document.getElementById('loginEmail').value;
-            const password = document.getElementById('loginPassword').value;
-            
-            if (email && password && window.validateEmail(email)) {
-                window.showNotification('Login successful! Welcome back.', 'success');
-                this.reset();
-            } else {
-                window.showNotification('Please enter valid credentials.', 'error');
-            }
-        });
-
-        document.getElementById('signupForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const firstName = document.getElementById('firstName').value;
-            const lastName = document.getElementById('lastName').value;
-            const email = document.getElementById('signupEmail').value;
-            const password = document.getElementById('signupPassword').value;
-            const userType = document.getElementById('userType').value;
-            
-            if (firstName && lastName && email && password && userType && window.validateEmail(email)) {
-                window.showNotification('Account created successfully! Welcome to InNeedIndeed.', 'success');
-                this.reset();
-            } else {
-                window.showNotification('Please fill in all fields with valid information.', 'error');
-            }
-        });
-    </script>
 </body>
 </html>

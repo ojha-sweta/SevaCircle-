@@ -1,73 +1,181 @@
-# Welcome to your Lovable project
+SEVA-CIRCLE
 
-## Project info
+Indian Yelp-style platform connecting local service providers (like tutors, astrologers, plumbers, etc.) with consumers in tier 2/3 cities.
 
-**URL**: https://lovable.dev/projects/b8982c1d-276d-4886-868f-20e2353077ec
+🖥️ Tech Stack
 
-## How can I edit this code?
+Frontend: React.js + Tailwind CSSBackend: Node.js + ExpressDatabase: MongoDB (Mongoose ODM)Authentication: JWT (JSON Web Tokens)API: RESTfulHosting: Vercel (Frontend) & Render/Glitch (Backend)
 
-There are several ways of editing your application.
+🔧 Features
 
-**Use Lovable**
+1. Home Page
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/b8982c1d-276d-4886-868f-20e2353077ec) and start prompting.
+Welcome section with brief intro
 
-Changes made via Lovable will be committed automatically to this repo.
+Service categories (salon, tutor, astrologer, plumber, maid...)
 
-**Use your preferred IDE**
+Testimonials carousel
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+Call-to-action buttons
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+2. User Authentication
 
-Follow these steps:
+Signup/Login with email/password
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+Role-based access: Service Provider or Consumer
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+3. Dashboard (Role-specific)
 
-# Step 3: Install the necessary dependencies.
-npm i
+For Service Providers:
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+Post/Edit/Delete gigs (services)
+
+View and respond to job requests
+
+Track ratings/reviews
+
+For Consumers:
+
+Post job requests
+
+View available gigs
+
+Hire service providers
+
+4. Gig/Job Management
+
+Service Providers: Post gigs with title, category, price, location, description
+
+Consumers: Post job requests with detailed requirement
+
+5. Search and Filters
+
+Search by category, price range, location
+
+Filter by user ratings
+
+6. Gig Details Page
+
+Images, description, ratings, price
+
+Location/service area
+
+Contact/Hire button
+
+7. Admin Panel
+
+View/Delete all gigs, jobs, users
+
+Moderate content
+
+📂 Project Structure
+
+Frontend (/client)
+
+/components
+
+/pages
+
+/services (API calls)
+
+/assets
+
+/context (Auth/User state)
+
+App.jsx
+
+main.jsx
+
+.env
+
+Backend (/server)
+
+/routes
+
+/controllers
+
+/models
+
+/middleware
+
+/utils
+
+.env
+
+server.js
+
+🧪 Sample Data & Seeding
+
+Use seed.js inside /server/utils/seed.js to populate MongoDB with sample users, gigs, and jobs.
+
+📄 .env Configuration
+
+Frontend (.env.local)
+
+VITE_API_URL=http://localhost:5000/api
+
+Backend (.env)
+
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_super_secret_jwt_key
+
+🛠️ Run Locally
+
+Prerequisites:
+
+Node.js + npm
+
+MongoDB (local or cloud)
+
+1. Clone the repo
+
+git clone https://github.com/yourusername/inneedindeed.git
+cd inneedindeed
+
+2. Setup Backend
+
+cd server
+npm install
 npm run dev
-```
 
-**Edit a file directly in GitHub**
+3. Setup Frontend
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+cd client
+npm install
+npm run dev
 
-**Use GitHub Codespaces**
+4. Access
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Frontend: http://localhost:5173
 
-## What technologies are used for this project?
+Backend API: http://localhost:5000/api
 
-This project is built with:
+🚀 Deployment
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+Frontend (Vercel)
 
-## How can I deploy this project?
+Connect GitHub repo to Vercel
 
-Simply open [Lovable](https://lovable.dev/projects/b8982c1d-276d-4886-868f-20e2353077ec) and click on Share -> Publish.
+Set environment variable VITE_API_URL to your backend URL
 
-## Can I connect a custom domain to my Lovable project?
+Backend (Render/Glitch)
 
-Yes, you can!
+Deploy with start command: node server.js
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+Add MONGO_URI and JWT_SECRET in Render's environment tab
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+🙌 Contribution
+
+Want to contribute? Fork the repo, create a new branch, and raise a PR!
+
+🙏 Acknowledgement
+
+Designed with love for Indian local workers and communities
+
+Inspired by platforms like Yelp, UrbanClap (now Urban Company), and JustDial
+
+📫 Contact
+
+Sweta (Creator)Email: ojhasweta064@gmail.com
+GitHub: ojha-sweta
